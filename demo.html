@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="weather"></ul>
+    <button class="show">show weather</button>
+    <script>
+        //CORS code
+        // document.querySelector('.show').addEventListener('click',function(){
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('GET','http://127.0.0.1:8080/getWeather',true);
+        //     xhr.onload = function(){
+        //         if((xhr.status>=200&&xhr.status<=300)||xhr.status==304) { 
+        //             showData(JSON.parse(xhr.responseText)); 
+        //         }else{ 
+        //             console.log('error'); 
+        //         }
+        //     } 
+        //     xhr.onerror=function(){ 
+        //         console.log('error'); 
+        //     } 
+        //     xhr.send();
+        // })
+
+
+        //jsonp code
+        // document.querySelector('.show').addEventListener('click',function(){
+        //     var script = document.createElement('script');
+        //     script.src = 'http://127.0.0.1:8080/getWeather?callback=showData';
+        //     document.head.appendChild(script);
+        //     document.head.removeChild(script);
+        // })
+
+        function showData(weather){
+            var html = '';
+            for(var i=0 ; i<weather.length; i++){
+                console.log(weather[i]);
+                html += '<li>' + weather[i] + '</li>';
+            }
+            console.log(html)
+            document.querySelector('.weather').innerHTML = html          
+        }
+        
+    </script>
+</body>
+</html>

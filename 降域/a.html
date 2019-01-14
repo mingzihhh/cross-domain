@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main{
+            float: left;
+            width: 450px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        iframe{
+            float: left;
+            width: 450px;
+            height: 300px;
+            border: 1px dashed #000;
+        }
+    </style>
+</head>
+<body>
+    <p>降域</p>
+    <div class="main">
+        <input type="text" placeholder="http://a.com:8080/a.html">
+    </div>
+    <iframe src="http://child.a.com:8080/b.html" frameborder="0"></iframe>
+
+    <script>
+        document.querySelector('.main input').addEventListener('input', function () {
+            console.log(this.value);
+            window.frames[0].document.querySelector('input').value = this.value;
+        })
+
+        document.domain = 'a.com'
+    </script>
+
+
+</body>
+
+</html>

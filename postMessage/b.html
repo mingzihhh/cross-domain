@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="main">
+        <input id="input" type="text" placeholder="http://child.a.com:8080/b.html">
+    </div>
+
+    <script>
+        document.querySelector('#input').addEventListener('input', function () {
+            console.log(this.value);
+            window.parent.postMessage(this.value,'http://a.com:8080');
+        })
+        window.addEventListener('message',function(e){
+            document.querySelector('#input').value = e.data;
+            console.log(e.data)
+        })
+    </script>
+
+</body>
+
+</html>
